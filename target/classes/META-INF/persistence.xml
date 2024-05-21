@@ -1,0 +1,38 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="Bancoestacionamento">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.example.model.Entity.Configuracao</class>
+        <class>com.example.model.Entity.Funcionario</class>
+        <class>com.example.model.Entity.Login</class>
+        <class>com.example.model.Entity.Marca</class>
+        <class>com.example.model.Entity.Modelo</class>
+        <class>com.example.model.Entity.Movimento</class>
+        <class>com.example.model.Entity.Veiculo</class>
+
+
+
+        <properties>
+            <!-- Configurações do banco de dados -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/estacionamento" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="Kaila2020@@" />
+
+            <!-- Configurações do Hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.show_sql" value="true" /> <!-- Para exibir
+			SQL no console -->
+            <property name="hibernate.hbm2ddl.auto" value="none" /> <!--
+			Atualiza o esquema do banco de dados -->
+            <property name="hibernate.default_schema" value="teste" /> <!--
+			Define o schema padrão -->
+        </properties>
+    </persistence-unit>
+</persistence>
