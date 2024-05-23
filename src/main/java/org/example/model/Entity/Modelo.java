@@ -9,7 +9,7 @@ public class Modelo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
+    //@Column (name = "id")
     private Long id;
 
     @ManyToOne
@@ -19,6 +19,15 @@ public class Modelo {
 
     @Column(name = "modelo", nullable = false, unique = true, length = 50)
     private String nome;
+
+    public Modelo(Long id, Marca marcaId, String nome) {
+        this.id = id;
+        this.marcaId = marcaId;
+        this.nome = nome;
+    }
+
+    public Modelo() {
+    }
 
     public Marca getMarcaId() {
         return marcaId;

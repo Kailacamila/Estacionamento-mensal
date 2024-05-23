@@ -8,25 +8,27 @@ import javax.persistence.*;
 public class Funcionario {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+   private Long id;
 
 
-    @Column(name = "nome" )
-    private String nome;
+  @Column(name = "nome" )
+   private String nome;
 
 
     @Column(name = "cpf" )
-    private String cpf;
+   private String cpf;
 
-    public Long getId() {
-        return id;
-    }
+
+
+   public Long getId() {
+       return id;
+   }
 
     public void setId(Long id) {
-        this.id = id;
+       this.id = id;
     }
 
     public String getNome() {
@@ -43,5 +45,13 @@ public class Funcionario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
+   }
+
+
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+  }
 }
+
+

@@ -1,13 +1,55 @@
 package org.example.model.Repositories;
 
-import org.example.model.Entity.Veiculo;
 
+import org.example.model.Entity.Marca;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+public class VeiculoRepository implements BasicCrud{
+    EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
 
-public interface VeiculoRepository  extends JpaRepository<Veiculo, Long> {
+    @Override
+    public Object create(Object object) {
+        Marca marca1 = (Marca) object;
+        em.getTransaction().begin();
+        em.persist(marca1);
+        em.getTransaction().commit();
+        return findById(marca1.getId());
+    }
 
+    @Override
+    public Object update(Object object) {
+        Marca marcaUpdate = (Marca) object;
+        em.getTransaction().begin();
+        em.merge(marcaUpdate);
+        em.getTransaction().commit();
+        return null;
+    }
 
-    List<Veiculo> findAll();
+    @Override
+    public void delete(Long id) {
+        em.getTransaction().begin();
+        var marca = (Marca) findById(id);
+        em.remove(marca);
+        em.getTransaction().commit();
+    }
+    public List<Marca> findAll(){
+        System.out.println("teste");
+        return new ArrayList<Marca>();
+        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
+    }
+
+    public Object findById(Object id) {
+        try {
+            return em.find(Marca.class, id);
+        } catch (Exception e) {
+            System.out.println(e.getCause().toString());
+        }
+        return null;
+    }
+
 }
+
