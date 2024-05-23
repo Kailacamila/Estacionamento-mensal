@@ -31,16 +31,26 @@ public class Movimento {
     @JoinColumn(name = "configuracao_id")
     private Configuracao configuracao;
 
-    @ManyToOne
+
     @Column(name = "valor_total")
     private BigDecimal valorTotal;
 
     @Column(name = "valor_hora" )
     private BigDecimal valorHora;
+    @Column(name = "finalizado" )
+    private boolean isFinalizado;
 
     @OneToOne
     @JoinColumn(name = "fucionario_id")
     private Funcionario funcionario;
+
+    public boolean isFinalizado() {
+        return isFinalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        isFinalizado = finalizado;
+    }
 
     public Long getId() {
         return id;

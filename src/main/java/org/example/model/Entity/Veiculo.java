@@ -20,6 +20,7 @@ public class Veiculo {
         @Column(name = "cor", length = 15, nullable = false)
         private String cor;
 
+        @OneToOne
         @JoinColumn(name = "modelo_id", nullable = false)
         private Modelo modeloId;
 
@@ -30,6 +31,54 @@ public class Veiculo {
 
 
         @Column(name = "ano", nullable = false)
-        private int ano;
-    }
+        private long ano;
+
+        public Long getId() {
+                return id;
+        }
+
+        public void setId(Long id) {
+                this.id = id;
+        }
+
+        public String getPlaca() {
+                return placa;
+        }
+
+        public void setPlaca(String placa) {
+                this.placa = placa;
+        }
+
+        public String getCor() {
+                return cor;
+        }
+
+        public void setCor(String cor) {
+                this.cor = cor;
+        }
+
+        public Modelo getModeloId() {
+                return modeloId;
+        }
+
+        public void setModeloId(Modelo modeloId) {
+                this.modeloId = modeloId;
+        }
+
+        public String getTipo() {
+                return tipo;
+        }
+
+        public void setTipo(String tipo) {
+                this.tipo = tipo;
+        }
+
+        public long getAno() {
+                return ano;
+        }
+
+        public void setAno(long ano) {
+                this.ano = ano;
+        }
+}
 

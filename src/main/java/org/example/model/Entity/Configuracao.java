@@ -31,6 +31,14 @@ public class Configuracao {
     @Column(name = "vagas_van")
     private int vagasVan;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public BigDecimal getValorHora() {
         return valorHora;
     }

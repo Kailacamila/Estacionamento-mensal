@@ -22,8 +22,7 @@ public class Funcionario {
    private String cpf;
 
 
-
-   public Long getId() {
+    public Long getId() {
        return id;
    }
 
@@ -47,11 +46,6 @@ public class Funcionario {
         this.cpf = cpf;
    }
 
-
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-  }
 }
 
 

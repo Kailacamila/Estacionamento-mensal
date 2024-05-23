@@ -1,16 +1,38 @@
 package org.example.controller;
 
 import org.example.model.Entity.Marca;
-import org.example.model.Entity.Movimento;
 import org.example.model.Repositories.MarcaRepository;
-import org.example.model.Repositories.MovimentoRepository;
+import org.example.model.Service.MarcaService;
 
 import java.util.List;
 
 public class MarcaController {
-    private MarcaRepository marcaRepository;
+    private MarcaService marcaService;
+
+    public MarcaController() {
+
+    }
 
     public List<Marca> findAll() {
-        return marcaRepository.findAll();
+        return marcaService.findAll();
+    }
+    public MarcaController(MarcaRepository marcaRepository) {
+        this.marcaService = new MarcaService(marcaRepository);
+    }
+
+    public Marca findMarcaById(Long id) {
+        return marcaService.findMarcaById(id);
+    }
+
+    public void updateMarca(Marca marca) {
+        marcaService.updateMarca(marca);
+    }
+
+    public void deleteMarca(Long id) {
+        marcaService.deleteMarca(id);
+    }
+
+    public Marca createMarca(Marca marca) {
+        return marcaService.createMarca(marca);
     }
 }

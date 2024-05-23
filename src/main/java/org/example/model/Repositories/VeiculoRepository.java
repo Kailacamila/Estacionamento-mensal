@@ -2,6 +2,7 @@ package org.example.model.Repositories;
 
 
 import org.example.model.Entity.Marca;
+import org.example.model.Entity.Veiculo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -13,18 +14,18 @@ public class VeiculoRepository implements BasicCrud{
 
     @Override
     public Object create(Object object) {
-        Marca marca1 = (Marca) object;
+        Veiculo veiculo1 = (Veiculo) object;
         em.getTransaction().begin();
-        em.persist(marca1);
+        em.persist(veiculo1);
         em.getTransaction().commit();
-        return findById(marca1.getId());
+        return findById(veiculo1.getId());
     }
 
     @Override
     public Object update(Object object) {
-        Marca marcaUpdate = (Marca) object;
+        Veiculo veiculoUpdate = (Veiculo) object;
         em.getTransaction().begin();
-        em.merge(marcaUpdate);
+        em.merge(veiculoUpdate);
         em.getTransaction().commit();
         return null;
     }
@@ -32,19 +33,19 @@ public class VeiculoRepository implements BasicCrud{
     @Override
     public void delete(Long id) {
         em.getTransaction().begin();
-        var marca = (Marca) findById(id);
-        em.remove(marca);
+        var veiculo = (Veiculo) findById(id);
+        em.remove(veiculo);
         em.getTransaction().commit();
     }
-    public List<Marca> findAll(){
+    public List<Veiculo> findAll(){
         System.out.println("teste");
-        return new ArrayList<Marca>();
+        return new ArrayList<Veiculo>();
         //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
     }
 
     public Object findById(Object id) {
         try {
-            return em.find(Marca.class, id);
+            return em.find(Veiculo.class, id);
         } catch (Exception e) {
             System.out.println(e.getCause().toString());
         }
