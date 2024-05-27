@@ -12,7 +12,7 @@ public class Marca {
     @Column (name = "id")
     private Long id;
 
-    @Column(name = "marca", nullable = false, unique = true)
+    @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
     public Long getId() {

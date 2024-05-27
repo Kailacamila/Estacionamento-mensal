@@ -140,20 +140,21 @@ public class Main {
         long idModelo = sc.nextLong();
         Modelo modelo = modeloController.findModeloById(idModelo);
 
-        System.out.println("Digite a cor do novo veiculo:");
-        String cor = sc.nextLine();
-
         System.out.println("Digite o ano do novo veículo:");
         long ano = sc.nextLong();
 
-        System.out.println("Digite o tipo do novo veiculo(carro, moto ou van):");
+        System.out.println("Digite a cor do novo veiculo:");
+        String cor = sc.nextLine();
+        cor = sc.nextLine();
+
+        System.out.println("Digite o tipo do novo veiculo (carro, moto ou van):");
         String tipo = sc.nextLine();
 
         Veiculo novoVeiculo = new Veiculo();
         novoVeiculo.setPlaca(placa);
         novoVeiculo.setModeloId(modelo);
         novoVeiculo.setCor(cor);
-        novoVeiculo.setTipo(cor);
+        novoVeiculo.setTipo(tipo);
         novoVeiculo.setAno(ano);
 
         Veiculo criadoVeiculo = veiculoController.createVeiculo(novoVeiculo);
@@ -262,7 +263,7 @@ public class Main {
             System.out.println("Novo funcionário criado com sucesso.");
             System.out.println("ID: " + criadoFuncionario.getId());
             System.out.println("Nome: " + criadoFuncionario.getNome());
-            System.out.println("Telefone: " + criadoFuncionario.getCpf());
+            System.out.println("Cpf: " + criadoFuncionario.getCpf());
         } else {
             System.out.println("Falha ao criar novo funcionário.");
         }

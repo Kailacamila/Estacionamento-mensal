@@ -20,7 +20,7 @@
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/estacionamentoo" />
+                      value="jdbc:mysql://localhost:3306/estacionamento" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="Kaila2020@@" />
 
@@ -29,7 +29,7 @@
                       value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.show_sql" value="true" /> <!-- Para exibir
 			SQL no console -->
-            <property name="hibernate.hbm2ddl.auto" value="create" /> <!--
+            <property name="hibernate.hbm2ddl.auto" value="none" /> <!--
 			Atualiza o esquema do banco de dados -->
             <property name="hibernate.default_schema" value="teste" /> <!--
 			Define o schema padrão -->
