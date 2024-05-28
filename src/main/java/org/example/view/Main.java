@@ -5,9 +5,11 @@ import org.example.model.Entity.*;
 import org.example.model.Repositories.*;
 import org.example.view.ExibirDados;
 
+import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.Scanner;
 
-public class Main {
+public class  Main {
     static FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
     static FuncionarioController funcionarioController = new FuncionarioController(funcionarioRepository);
     static VeiculoRepository veiculoRepository = new VeiculoRepository();
@@ -501,78 +503,86 @@ public class Main {
     }
 
     private static void editarMovimento() {
-//        System.out.println("Digite o ID do movimento a ser editado:");
-//        long id = sc.nextLong();
-//        sc.nextLine();
-//
-//        Movimento movimento = movimentoController.findMovimentoById(id);
-//        if (movimento == null) {
-//            System.out.println("Movimento não encontrado.");
-//            return;
-//        }
-//
-//        System.out.println("Digite o novo ID do veículo (ou pressione Enter para manter o atual: " + movimento.getVeiculo() + "):");
-//        String novoIdVeiculo = sc.nextLine();
-//        if (!novoIdVeiculo.isEmpty()) {
-//            movimento.setIdVeiculo(Long.parseLong(novoIdVeiculo));
-//        }
-//
-//        System.out.println("Digite o novo ID do funcionário (ou pressione Enter para manter o atual: " + movimento.getIdFuncionario() + "):");
-//        String novoIdFuncionario = sc.nextLine();
-//        if (!novoIdFuncionario.isEmpty()) {
-//            movimento.setIdFuncionario(Long.parseLong(novoIdFuncionario));
-//        }
-//
-//        System.out.println("Digite a nova descrição (ou pressione Enter para manter a atual: " + movimento.getDescricao() + "):");
-//        String novaDescricao = sc.nextLine();
-//        if (!novaDescricao.isEmpty()) {
-//            movimento.setDescricao(novaDescricao);
-//        }
-//
-//        System.out.println("Digite a nova data (ou pressione Enter para manter a atual: " + movimento.getData() + "):");
-//        String novaData = sc.nextLine();
-//        if (!novaData.isEmpty()) {
-//            movimento.setData(novaData);
-//        }
-//
-//        movimentoController.updateMovimento(movimento);
-//        System.out.println("Movimento atualizado com sucesso.");
+        System.out.println("Digite o ID do movimento a ser editado:");
+        long id = sc.nextLong();
+        sc.nextLine();
+
+        Movimento movimento = movimentoController.findMovimentoById(id);
+        if (movimento == null) {
+            System.out.println("Movimento não encontrado.");
+            return;
+        }
+
+        System.out.println("Digite a nova hora de entrada (HH:MM) (ou pressione Enter para manter a atual: " + movimento.getEntrada() + "):");
+        String novaEntrada = sc.nextLine();
+        if (!novaEntrada.isEmpty()) {
+            movimento.setEntrada(LocalTime.parse(novaEntrada));
+        }
+
+        System.out.println("Digite a nova hora de saída (HH:MM) (ou pressione Enter para manter a atual: " + movimento.getSaida() + "):");
+        String novaSaida = sc.nextLine();
+        if (!novaSaida.isEmpty()) {
+            movimento.setSaida(LocalTime.parse(novaSaida));
+        }
+
+        System.out.println("Digite o novo valor por hora (ou pressione Enter para manter o atual: " + movimento.getValorHora() + "):");
+        String novoValorHora = sc.nextLine();
+        if (!novoValorHora.isEmpty()) {
+            movimento.setValorHora(new BigDecimal(novoValorHora));
+        }
+
+        movimentoController.updateMovimento(movimento);
+        System.out.println("Movimento atualizado com sucesso.");
     }
 
+
     private static void criarNovoMovimento() {
-//        System.out.println("Digite o ID do veículo:");
-//        long idVeiculo = sc.nextLong();
-//
-//        System.out.println("Digite o ID do funcionário:");
-//        long idFuncionario = sc.nextLong();
-//
-//        sc.nextLine(); // Limpa o buffer
-//
-//        System.out.println("Digite a descrição do movimento:");
-//        String descricao = sc.nextLine();
-//
-//        System.out.println("Digite a data do movimento:");
-//        String data = sc.nextLine();
-//
-//        Movimento novoMovimento = new Movimento();
-//        novoMovimento.setIdVeiculo(idVeiculo);
-//        novoMovimento.setIdFuncionario(idFuncionario);
-//        novoMovimento.setDescricao(descricao);
-//        novoMovimento.setData(data);
-//
-//        Movimento criadoMovimento = movimentoController.createMovimento(novoMovimento);
-//
-//        if (criadoMovimento != null) {
-//            System.out.println("Novo movimento criado com sucesso.");
-//            System.out.println("ID: " + criadoMovimento.getId());
-//            System.out.println("ID do Veículo: " + criadoMovimento.getIdVeiculo());
-//            System.out.println("ID do Funcionário: " + criadoMovimento.getIdFuncionario());
-//            System.out.println("Descrição: " + criadoMovimento.getDescricao());
-//            System.out.println("Data: " + criadoMovimento.getData());
-//        } else {
-//            System.out.println("Falha ao criar novo movimento.");
-//        }
-    }
+            System.out.println("Digite a hora de entrada (HH:MM):");
+            LocalTime entrada = LocalTime.parse(sc.nextLine());
+
+            System.out.println("Digite o ID do veículo associado:");
+            long veiculoId = sc.nextLong();
+            sc.nextLine();
+            Veiculo veiculo = veiculoController.findVeiculoById(veiculoId);
+            if (veiculo == null) {
+                System.out.println("Veículo não encontrado.");
+                return;
+            }
+
+            System.out.println("Digite o valor por hora:");
+            BigDecimal valorHora = new BigDecimal(sc.nextLine());
+
+            System.out.println("Digite o ID do funcionário associado:");
+            long funcionarioId = sc.nextLong();
+            sc.nextLine();
+            Funcionario funcionario = funcionarioController.findFuncionarioById(funcionarioId);
+            if (funcionario == null) {
+                System.out.println("Funcionário não encontrado.");
+                return;
+            }
+
+            Movimento novoMovimento = new Movimento();
+            novoMovimento.setEntrada(entrada);
+            novoMovimento.setVeiculo(veiculo);
+            novoMovimento.setValorHora(valorHora);
+            novoMovimento.setFuncionario(funcionario);
+            novoMovimento.setFinalizado(false);
+
+            Movimento criadoMovimento = movimentoController.createMovimento(novoMovimento);
+
+            if (criadoMovimento != null) {
+                System.out.println("Novo movimento criado com sucesso.");
+                System.out.println("ID: " + criadoMovimento.getId());
+                System.out.println("Entrada: " + criadoMovimento.getEntrada());
+                System.out.println("Veículo ID: " + criadoMovimento.getVeiculo().getId());
+                System.out.println("Valor por hora: " + criadoMovimento.getValorHora());
+                System.out.println("Funcionário ID: " + criadoMovimento.getFuncionario().getId());
+            } else {
+                System.out.println("Falha ao criar novo movimento.");
+            }
+        }
+
+
 
     private static void aguardarEnter() {
         System.out.println("Pressione Enter para continuar...");

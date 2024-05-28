@@ -27,10 +27,6 @@ public class Movimento {
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 
-    @ManyToOne
-    @JoinColumn(name = "configuracao_id")
-    private Configuracao configuracao;
-
 
     @Column(name = "valor_total")
     private BigDecimal valorTotal;
@@ -76,13 +72,7 @@ public class Movimento {
         this.valorHora = valorHora;
     }
 
-    public Configuracao getConfiguracao() {
-        return configuracao;
-    }
 
-    public void setConfiguracao(Configuracao configuracao) {
-        this.configuracao = configuracao;
-    }
 
     public BigDecimal getValorTotal() {
         return valorTotal;

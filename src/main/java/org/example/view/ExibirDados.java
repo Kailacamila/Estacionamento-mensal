@@ -5,26 +5,12 @@ import org.example.model.Entity.*;
 
 public class ExibirDados {
     static MarcaController marcaController = new MarcaController();
-    static ConfiguracaoController configuracaoController = new ConfiguracaoController();
     static ModeloController modeloController = new ModeloController();
     static VeiculoController veiculoController = new VeiculoController();
     static FuncionarioController funcionarioController = new FuncionarioController();
     static MovimentoController movimentoController = new MovimentoController();
 
-    public static void ShowConfiguracaoById(Long id) {
-        Configuracao configuracao = configuracaoController.findConfiguracaoById(id);
-        if (configuracao != null) {
-            System.out.println("ID: " + configuracao.getId());
-            System.out.println("Valor Hora: " + configuracao.getValorHora());
-            System.out.println("Início do Expediente: " + configuracao.getInicioExpediente());
-            System.out.println("Fim do Expediente: " + configuracao.getFimExpediente());
-            System.out.println("Vagas Carro: " + configuracao.getVagasCarro());
-            System.out.println("Vagas Moto: " + configuracao.getVagasMoto());
-            System.out.println("Vagas Van: " + configuracao.getVagasVan());
-        } else {
-            System.out.println("Configuração não encontrada.");
-        }
-    }
+
 
     public static void ShowFuncionarioById(Long id) {
         Funcionario funcionario = funcionarioController.findFuncionarioById(id);
@@ -64,7 +50,6 @@ public class ExibirDados {
             System.out.println("Saída: " + movimento.getSaida());
             System.out.println("Tempo: " + movimento.getTempo());
             System.out.println("Veículo ID: " + movimento.getVeiculo().getId());
-            System.out.println("Configuração ID: " + movimento.getConfiguracao().getId());
             System.out.println("Valor Total: " + movimento.getValorTotal());
             System.out.println("Valor Hora: " + movimento.getValorHora());
             System.out.println("Finalizado: " + movimento.isFinalizado());
