@@ -12,17 +12,17 @@ import java.util.List;
 
 public class VeiculoController {
 
-    private VeiculoService veiculoService;
+	 private VeiculoService veiculoService = new VeiculoService();
 
+
+	    public VeiculoController() {
+	        
+	    }
+	    
     public List<Veiculo> findAll(Long id) {
         return veiculoService.findAll();
     }
-    public VeiculoController() {
-
-    }
-    public VeiculoController(VeiculoRepository veiculoRepository) {
-        this.veiculoService = new VeiculoService(veiculoRepository);
-    }
+  
 
     public Veiculo findVeiculoById(Long id) {
         return veiculoService.findVeiculoById(id);

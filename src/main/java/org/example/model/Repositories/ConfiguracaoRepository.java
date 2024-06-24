@@ -1,31 +1,30 @@
 package org.example.model.Repositories;
 
+import org.example.model.Entity.Configuracao;
 import org.example.model.Entity.Marca;
-import org.example.model.Entity.Modelo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModeloRepository implements BasicCrud{
+public class ConfiguracaoRepository implements BasicCrud{
     EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
 
     @Override
     public Object create(Object object) {
-        Modelo modelo1 = (Modelo) object;
+        Configuracao configuracao1 = (Configuracao) object;
         em.getTransaction().begin();
-        em.persist(modelo1);
+        em.persist(configuracao1);
         em.getTransaction().commit();
-        return findById(modelo1.getId());
+        return findById(configuracao1.getId());
     }
-    
 
     @Override
     public Object update(Object object) {
-        Modelo modeloUpdate = (Modelo) object;
+        Configuracao configuracaoUpdate = (Configuracao) object;
         em.getTransaction().begin();
-        em.merge(modeloUpdate);
+        em.merge(configuracaoUpdate);
         em.getTransaction().commit();
         return null;
     }
@@ -33,31 +32,27 @@ public class ModeloRepository implements BasicCrud{
     @Override
     public void delete(Long id) {
         em.getTransaction().begin();
-        var modelo = (Modelo) findById(id);
-        em.remove(modelo);
+        var configuracao = (Configuracao) findById(id);
+        em.remove(configuracao);
         em.getTransaction().commit();
     }
-    public List<Modelo> findAll(){
+    public List<Configuracao> findAll(){
         System.out.println("teste");
-        return new ArrayList<Modelo>();
+        return new ArrayList<Configuracao>();
         //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
     }
 
-    @Override
+
     public Object findById(Object id) {
-    	var modelo = (Modelo) id;
         try {
-            return em.find(Modelo.class, modelo.getId());
+            return em.find(Configuracao.class, id);
         } catch (Exception e) {
             System.out.println(e.getCause().toString());
         }
         return null;
     }
 
-
 }
-
-
 
 // creat  // update // delete // fibyid//
 

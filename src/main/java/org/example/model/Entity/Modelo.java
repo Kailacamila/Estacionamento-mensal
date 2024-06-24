@@ -1,13 +1,16 @@
 package org.example.model.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_modelo", schema = "public")
-public class Modelo {
+public class Modelo implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column (name = "id")
     private Long id;

@@ -1,16 +1,17 @@
 package org.example.model.Repositories;
 
 
-import org.example.model.Entity.Marca;
-import org.example.model.Entity.Veiculo;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+import org.example.model.Entity.Veiculo;
+
 public class VeiculoRepository implements BasicCrud{
-    EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
+
+    private EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
 
     @Override
     public Object create(Object object) {
@@ -20,6 +21,7 @@ public class VeiculoRepository implements BasicCrud{
         em.getTransaction().commit();
         return findById(veiculo1.getId());
     }
+    
 
     @Override
     public Object update(Object object) {
@@ -45,7 +47,7 @@ public class VeiculoRepository implements BasicCrud{
 
     public Object findById(Object id) {
         try {
-            return em.find(Veiculo.class, id);
+            return em.find(Veiculo.class, (Long)id);
         } catch (Exception e) {
             System.out.println(e.getCause().toString());
         }

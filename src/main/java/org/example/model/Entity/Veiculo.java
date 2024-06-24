@@ -32,6 +32,8 @@ public class Veiculo {
 
         @Column(name = "ano", nullable = false)
         private long ano;
+        
+        
 
         public Long getId() {
                 return id;

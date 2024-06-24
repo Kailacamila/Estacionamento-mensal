@@ -1,18 +1,16 @@
 package org.example.model.Service;
 
-import org.example.model.Entity.Marca;
-import org.example.model.Entity.Veiculo;
-import org.example.model.Repositories.MarcaRepository;
-import org.example.model.Repositories.VeiculoRepository;
-
 import java.util.List;
+
+import org.example.model.Entity.Veiculo;
+import org.example.model.Repositories.VeiculoRepository;
 
 public class VeiculoService {
 
-    private VeiculoRepository veiculoRepository = new VeiculoRepository();
+	  private VeiculoRepository veiculoRepository = new VeiculoRepository();
 
-    public VeiculoService(VeiculoRepository veiculoRepository) {
-    }
+
+  
 
     public Veiculo findVeiculoById(Long id) {
         return (Veiculo) veiculoRepository.findById(id);
