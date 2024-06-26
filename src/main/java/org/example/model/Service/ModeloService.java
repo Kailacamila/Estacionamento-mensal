@@ -11,8 +11,6 @@ public class ModeloService {
 
     private ModeloRepository modeloRepository = new ModeloRepository();
 
-    public ModeloService(ModeloRepository modeloRepository) {
-    }
 
     public Modelo findModeloById(Long id) {
         return (Modelo) modeloRepository.findById(id);

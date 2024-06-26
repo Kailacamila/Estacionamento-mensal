@@ -12,17 +12,19 @@ import org.example.model.Service.ModeloService;
 import java.util.List;
 
 public class ModeloController {
-    private ModeloService modeloService;
+    private ModeloService modeloService = new ModeloService();
+    
+    public ModeloController() {
+    	
+    }
 
-    public List<Modelo> findAll(Long id) {
+    public List<Modelo> findAll() {
         return modeloService.findAll();
 
     }
-    public ModeloController() {
-
-    }
+   
     public ModeloController(ModeloRepository modeloRepository) {
-        this.modeloService = new ModeloService(modeloRepository);
+        this.modeloService = new ModeloService();
     }
 
     public Modelo findModeloById(Long id) {

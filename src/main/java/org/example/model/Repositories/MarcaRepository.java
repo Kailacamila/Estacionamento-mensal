@@ -1,5 +1,6 @@
 package org.example.model.Repositories;
 
+import org.example.model.Entity.Configuracao;
 import org.example.model.Entity.Marca;
 
 import javax.persistence.EntityManager;
@@ -8,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarcaRepository implements BasicCrud{
+	
     EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
 
     @Override
     public Object create(Object object) {
         Marca marca1 = (Marca) object;
-        em.getTransaction().begin();
+        em.getTransaction().begin(); 
         em.persist(marca1);
         em.getTransaction().commit();
         return findById(marca1.getId());
@@ -36,9 +38,8 @@ public class MarcaRepository implements BasicCrud{
         em.getTransaction().commit();
     }
     public List<Marca> findAll(){
-        System.out.println("teste");
-        return new ArrayList<Marca>();
-        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
+        return em.createQuery("SELECT m FROM Marca m", Marca.class).getResultList();
+
     }
 
 

@@ -11,8 +11,7 @@ public class FuncionarioService {
 
     private FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
-    }
+ 
 
     public Funcionario findFuncionarioById(Long id) {
         return (Funcionario) funcionarioRepository.findById(id);

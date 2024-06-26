@@ -12,16 +12,16 @@ import org.example.model.Service.MarcaService;
 import java.util.List;
 
 public class FuncionarioController {
-    private FuncionarioService funcionarioService;
+    private FuncionarioService funcionarioService = new FuncionarioService();
 
-    public List<Funcionario> findAll(Long id) {
+    public FuncionarioController() {
+
+    }
+    
+    public List<Funcionario> findAll() {
         return funcionarioService.findAll();
-    }public FuncionarioController() {
+    }
 
-    }
-    public FuncionarioController(FuncionarioRepository funcionarioRepository) {
-        this.funcionarioService = new FuncionarioService(funcionarioRepository);
-    }
 
     public Funcionario findFuncionarioById(Long id) {
         return funcionarioService.findFuncionarioById(id);

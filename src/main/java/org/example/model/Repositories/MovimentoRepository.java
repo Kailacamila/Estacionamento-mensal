@@ -1,5 +1,6 @@
 package org.example.model.Repositories;
 
+import org.example.model.Entity.Funcionario;
 import org.example.model.Entity.Marca;
 import org.example.model.Entity.Movimento;
 
@@ -37,10 +38,8 @@ public class MovimentoRepository implements BasicCrud{
         em.getTransaction().commit();
     }
     public List<Movimento> findAll(){
-        System.out.println("teste");
-        return new ArrayList<Movimento>();
-        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
-    }
+        return em.createQuery("SELECT m FROM Movimento m", Movimento.class).getResultList();
+ }
 
 
     public Object findById(Object id) {

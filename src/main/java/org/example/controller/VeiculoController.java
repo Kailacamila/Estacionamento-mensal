@@ -19,7 +19,7 @@ public class VeiculoController {
 	        
 	    }
 	    
-    public List<Veiculo> findAll(Long id) {
+    public List<Veiculo> findAll() {
         return veiculoService.findAll();
     }
   

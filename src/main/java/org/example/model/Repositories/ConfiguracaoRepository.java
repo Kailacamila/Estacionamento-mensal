@@ -2,6 +2,7 @@ package org.example.model.Repositories;
 
 import org.example.model.Entity.Configuracao;
 import org.example.model.Entity.Marca;
+import org.example.model.Entity.Veiculo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -37,10 +38,8 @@ public class ConfiguracaoRepository implements BasicCrud{
         em.getTransaction().commit();
     }
     public List<Configuracao> findAll(){
-        System.out.println("teste");
-        return new ArrayList<Configuracao>();
-        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
-    }
+        return em.createQuery("SELECT c FROM Configuracao c", Configuracao.class).getResultList();
+        }
 
 
     public Object findById(Object id) {

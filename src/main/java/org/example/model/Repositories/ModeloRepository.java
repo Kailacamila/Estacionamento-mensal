@@ -1,5 +1,6 @@
 package org.example.model.Repositories;
 
+import org.example.model.Entity.Funcionario;
 import org.example.model.Entity.Marca;
 import org.example.model.Entity.Modelo;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModeloRepository implements BasicCrud{
+	
     EntityManager em = Persistence.createEntityManagerFactory("Bancoestacionamento").createEntityManager();
 
     @Override
@@ -38,9 +40,8 @@ public class ModeloRepository implements BasicCrud{
         em.getTransaction().commit();
     }
     public List<Modelo> findAll(){
-        System.out.println("teste");
-        return new ArrayList<Modelo>();
-        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
+        return em.createQuery("SELECT m FROM Modelo m", Modelo.class).getResultList();
+
     }
 
     @Override

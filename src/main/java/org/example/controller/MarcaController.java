@@ -7,7 +7,8 @@ import org.example.model.Service.MarcaService;
 import java.util.List;
 
 public class MarcaController {
-    private MarcaService marcaService;
+	
+    private MarcaService marcaService = new MarcaService();
 
     public MarcaController() {
 
@@ -15,9 +16,6 @@ public class MarcaController {
 
     public List<Marca> findAll() {
         return marcaService.findAll();
-    }
-    public MarcaController(MarcaRepository marcaRepository) {
-        this.marcaService = new MarcaService(marcaRepository);
     }
 
     public Marca findMarcaById(Long id) {

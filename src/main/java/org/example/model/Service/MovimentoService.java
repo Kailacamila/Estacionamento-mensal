@@ -14,8 +14,7 @@ public class MovimentoService {
 
     private MovimentoRepository movimentoRepository = new MovimentoRepository();
 
-    public MovimentoService(MovimentoRepository movimentoRepository) {
-    }
+
 
     public Movimento findMovimentoById(Long id) {
         return (Movimento) movimentoRepository.findById(id);
@@ -34,7 +33,6 @@ public class MovimentoService {
     }
 
     public Movimento createMovimento(Movimento movimento) {
-        movimento.setEntrada(LocalTime.now());
         return (Movimento) movimentoRepository.create(movimento);
     }
     public Movimento finalizarMovimento(Long id) {

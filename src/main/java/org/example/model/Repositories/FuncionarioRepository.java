@@ -39,8 +39,7 @@ public class FuncionarioRepository implements BasicCrud {
     }
 
     public List<Funcionario> findAll() {
-        return new ArrayList<Funcionario>();
-        //return em.createQuery("SELECT f FROM Funcionario f", Funcionario.class).getResultList();
+        return em.createQuery("SELECT f FROM Funcionario f", Funcionario.class).getResultList();
     }
 
     public Object findById(Object id) {

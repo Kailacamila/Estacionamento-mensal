@@ -9,8 +9,7 @@ public class MarcaService {
 
     private MarcaRepository marcaRepository = new MarcaRepository();
 
-    public MarcaService(MarcaRepository marcaRepository) {
-    }
+
 
     public Marca findMarcaById(Long id) {
         return (Marca) marcaRepository.findById(id);

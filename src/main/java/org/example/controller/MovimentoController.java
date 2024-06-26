@@ -11,16 +11,12 @@ import org.example.model.Service.MovimentoService;
 import java.util.List;
 
 public class MovimentoController {
-    private MovimentoService movimentoService;
-
-    public MovimentoController(MovimentoRepository movimentoRepository) {
-        this.movimentoService = new MovimentoService(movimentoRepository);
-    }
+    private MovimentoService movimentoService = new MovimentoService();
 
     public MovimentoController() {
 
     }
-    public List<Movimento> findAll(Long id) {
+    public List<Movimento> findAll() {
         return movimentoService.findAll();
     }
 

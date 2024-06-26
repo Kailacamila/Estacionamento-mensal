@@ -11,15 +11,15 @@ import java.util.Scanner;
 
 public class  Main {
     static FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-    static FuncionarioController funcionarioController = new FuncionarioController(funcionarioRepository);
+    static FuncionarioController funcionarioController = new FuncionarioController();
     static VeiculoRepository veiculoRepository = new VeiculoRepository();
-    static VeiculoController veiculoController = new VeiculoController(veiculoRepository);
+    static VeiculoController veiculoController = new VeiculoController();
     static MarcaRepository marcaRepository = new MarcaRepository();
-    static MarcaController marcaController = new MarcaController(marcaRepository);
+    static MarcaController marcaController = new MarcaController();
     static ModeloRepository modeloRepository = new ModeloRepository();
-    static ModeloController modeloController = new ModeloController(modeloRepository);
+    static ModeloController modeloController = new ModeloController();
     static MovimentoRepository movimentoRepository = new MovimentoRepository();
-    static MovimentoController movimentoController = new MovimentoController(movimentoRepository);
+    static MovimentoController movimentoController = new MovimentoController();
 
     private static Scanner sc = new Scanner(System.in);
     

@@ -40,11 +40,9 @@ public class VeiculoRepository implements BasicCrud{
         em.getTransaction().commit();
     }
     public List<Veiculo> findAll(){
-        System.out.println("teste");
-        return new ArrayList<Veiculo>();
-        //return em.createQuery("aa",FuncionariosEntity.class).getResultList();
+        return em.createQuery("SELECT v FROM Veiculo v", Veiculo.class).getResultList();
     }
-
+    @Override
     public Object findById(Object id) {
         try {
             return em.find(Veiculo.class, (Long)id);
